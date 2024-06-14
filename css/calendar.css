@@ -1,0 +1,313 @@
+@charset "utf-8";
+
+*{
+  margin: 0 auto;
+  width: 1280px;
+  /* outline: solid #FF0000; */
+}
+
+
+  /*タブのスタイル*/
+.tab_item {
+  width: calc(100%/3);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.tab_item:hover {
+  opacity: 0.5;
+}
+
+
+  /*ラジオボタンを全て消す*/
+main input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#room1:checked ~ #room1_content,
+#room2:checked ~ #room2_content,
+#room3:checked ~ #room3_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+#room1:checked + .tab_item,
+#room2:checked + .tab_item,
+#room3:checked + .tab_item {
+  background-color: #43d9ffe7;
+  color: #fff;
+}
+
+h3{
+  font-size: 30px;
+}
+
+caption{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.month{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.month a{
+  font-size: 20px;
+  color: #007bff;
+}
+
+.prev_month{
+  width: 50px;
+  text-align: start;
+  margin-left: 20px;
+  /* background-color: #0000FF; */
+}
+
+.next_month{
+  width: 50px;
+  text-align: end;
+  margin-right: 30px;
+}
+
+.calendar{
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+  vertical-align: middle;
+}
+
+.calendar th,td{
+  padding: 8px;
+  background-color: #FFF;
+  text-align: center;
+  border: 1px solid #CCC;
+}
+
+.calendar a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.calendar a:hover{
+  font-weight: bolder;
+}
+
+/* 日曜日は赤く */
+.calendar th:first-of-type, table.calendar td:first-of-type{
+  background-color: #ffefef;
+  color: #FF0000;
+  font-weight: bold;
+}
+
+/* 土曜日は青く */
+.calendar th:last-of-type, table.calendar td:last-of-type{
+  background-color: #ededff;
+  color: #0000FF;
+  font-weight: bold;
+}
+
+/* 今日の日付 */
+.today{
+  display: inline-block;
+  width: 100%;
+  font-weight: bold;
+  /* background-color: #fbffa3; */
+}
+
+/* 選択された日付 */
+.selected-date {
+  display: inline-block;
+  width: 100%;
+  background-color: #43d9ffe7;
+}
+
+
+/* フォーム */
+form {
+  background-color: #fff;
+  /* border-radius: 8px; */
+}
+
+.situation {
+  display: inline-block;
+  width: 45%;
+  /* flex-wrap: wrap; */
+  /* vertical-align: middle; */
+}
+
+.situation data{
+  display: inline;
+  width: 10%;
+  margin: 0;
+}
+
+
+.room_number {
+  display: flex;
+  width: 45%;
+}
+
+.addmin {
+  display: inline-block;
+  width: 45%;
+  vertical-align: middle;
+}
+
+.addmin input[type="submit"] {
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addmin input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+form h2{
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+form p{
+  width: 100%;
+  margin: 15px 0px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+form label{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+form input[type="radio"] {
+  width: 100px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+form textarea{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  display: block;
+  width: 20%;
+  padding: 10px 20px;
+  justify-content: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+
+/******* モーダル用のスタイル *******/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal h2{
+  color: rgb(0, 0, 0)
+}
+
+.modal p{ 
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.modal-content{
+  margin: 15% auto;
+  padding: 45px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: #56eadebf;
+}
+
+.close {
+  float: left;
+  width: 25%;
+  margin-top: 2%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #100101e0;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.confirm {
+  float: right;
+  width: 20%;
+  margin-top: 2%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #100101e0;
+}
+
+/* ログアウト */
+.logout {
+  margin-top: 30px;
+  text-align: end;
+  font-size: 18px;
+}

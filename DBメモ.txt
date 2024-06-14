@@ -1,0 +1,34 @@
+mysql -u root -p
+Enter password: rootpass
+
+
+mysql> INSERT INTO users (username, password) VALUES ('kamada', 'aaa123');
+
+mysql> INSERT INTO users (username, password) VALUES ('test', 'aaa');
+
+SHOW DATABASES;
+
+USE  login_database;
+
+SHOW TABLES;
+
+SELECT * FROM テーブル名;
+
+
+CREATE TABLE reserve (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    date DATE,
+    start_time TIME,
+    end_time TIME,
+    room_name VARCHAR(5),
+    comment TEXT
+);
+
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
