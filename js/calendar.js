@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedRoom = this.getAttribute('data-room'); // クリックされたリンクから部屋を取得
             const selectedDate = this.getAttribute('data-date'); // クリックされたリンクから日付を取得
 
+            // 選択されている日付要素の背景色をクリア
+            if (selectedDateElement) {
+                selectedDateElement.classList.remove('selected-date');
+            }
+
             // 新しいクリックされた日付に背景色を追加
             this.classList.add('selected-date');
             selectedDateElement = this;
@@ -24,15 +29,22 @@ document.addEventListener('DOMContentLoaded', function() {
     tabItems.forEach(tabItem => {
         tabItem.addEventListener('click', function() {
             const selectedRoom = this.value; // クリックされた面談室の値を取得
-            const selectedDateElement = document.querySelector('.selected-date'); // 現在選択されている日付要素を取得
-            if (selectedDateElement) {
-                const selectedDate = selectedDateElement.getAttribute('data-date'); // 選択されている日付を取得
-                selectedDateElement.classList.add('selected-date');
+            const selectedDate = selectedDateElement ? selectedDateElement.getAttribute('data-date') : null; // 選択されている日付を取得
+            if (selectedDateElement && selectedDate) {
+                // 日付要素にクラスを追加して背景色を更新
+                const dateElement = document.querySelector(`.date-link[data-date="${selectedDate}"]`);
+                if (dateElement) {
+                    dateElement.classList.add('selected-date');
+                    selectedDateElement = dateElement; // 日付要素を更新
+                }
                 reflection(selectedRoom, selectedDate); // 予約情報を反映
             }
+            
+            // 選択された面談室をモーダルウィンドウに表示
+            const reservationRoom = document.getElementById("reservation-room");
+            reservationRoom.textContent = selectedRoom;
         });
     });
-
     // 予約情報を取得しUIに反映する関数
     function reflection(selectedRoom, selectedDate) {
         fetch('../php/reflection.php', {
