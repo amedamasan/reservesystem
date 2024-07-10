@@ -1,7 +1,3 @@
-mysql -u root -p
-Enter password: rootpass
-
-
 mysql> INSERT INTO users (username, password) VALUES ('tanaka', 'aaa123');
 
 mysql> INSERT INTO users (username, password) VALUES ('test', 'aaa');
